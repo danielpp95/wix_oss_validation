@@ -1,0 +1,18 @@
+<Project Sdk="WixToolset.Sdk/5.0.2">
+
+  <PropertyGroup>
+    <OutputName>OsWarningDemo</OutputName>
+    <Platform Condition="'$(Platform)' == '' Or '$(Platform)' == 'Any CPU'">x64</Platform>
+    <InstallerPlatform>x64</InstallerPlatform>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Builds the app first and exposes its output dir as the OsWarningDemo.App.TargetDir preprocessor variable. -->
+    <ProjectReference Include="..\OsWarningDemo.App\OsWarningDemo.App.csproj" />
+  </ItemGroup>
+
+</Project>

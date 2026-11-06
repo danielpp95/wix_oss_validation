@@ -1,0 +1,104 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+  <Package Name="OS Warning Demo"
+           Manufacturer="Contoso"
+           Version="1.0.0.0"
+           UpgradeCode="6B0F3C8E-6D2A-4C55-9C3B-2E8A1C7F4D10"
+           Scope="perMachine">
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <!--
+      OS detection.
+
+      Windows Installer's own VersionNT / WindowsBuild properties are version-lied on
+      Windows 10/11 (they report 603 / 9600, i.e. Windows 8.1), so read the registry instead:
+        - CurrentMajorVersionNumber exists only on Windows 10+ and is 10 on both Windows 10 and 11.
+          A DWORD read with Type="raw" comes back as "#10".
+        - MsiNTProductType is 1 for client editions; Windows Server 2016+ also reports major 10,
+          so it is excluded here (2 = domain controller, 3 = server).
+    -->
+    <Property Id="WINDOWS_MAJOR_VERSION">
+      <RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+                      Name="CurrentMajorVersionNumber" Type="raw" />
+    </Property>
+    <Property Id="WINDOWS_BUILD">
+      <RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+                      Name="CurrentBuildNumber" Type="raw" />
+    </Property>
+
+    <!-- Set FORCE_OS_WARNING=1 on the msiexec command line to see the warning on a supported OS. -->
+    <SetProperty Id="OS_UNSUPPORTED" Value="1" After="AppSearch" Sequence="both"
+                 Condition='NOT (WINDOWS_MAJOR_VERSION = "#10" AND MsiNTProductType = 1) OR FORCE_OS_WARNING' />
+
+    <!--
+      Deliberately no <Launch> condition: that would block the install.
+      Instead the warning dialog below is shown and the user can choose to continue.
+      Silent installs (/qn) skip the UI entirely, so they are never interrupted.
+    -->
+
+    <Feature Id="Main">
+      <ComponentGroupRef Id="AppComponents" />
+    </Feature>
+
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+
+    <UI>
+      <!-- Shown before the welcome page, only on first install / upgrade of an unsupported OS. -->
+      <Dialog Id="UnsupportedOsDlg" Width="370" Height="270" Title="!(loc.WelcomeDlg_Title)">
+        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="WixUI_Bmp_Banner" />
+        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+        <Control Id="Title" Type="Text" X="15" Y="6" Width="270" Height="15" Transparent="yes" NoPrefix="yes"
+                 Text="{\WixUI_Font_Title}Unsupported operating system" />
+        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes"
+                 Text="This version of Windows is out of support for [ProductName]." />
+
+        <Control Id="WarningIcon" Type="Icon" X="20" Y="60" Width="32" Height="32" FixedSize="yes" IconSize="32"
+                 Text="WixUI_Ico_Exclam" />
+        <Control Id="WarningText" Type="Text" X="64" Y="60" Width="290" Height="110" NoPrefix="yes"
+                 Text="Setup detected that this computer is running an operating system that is not supported by [ProductName] (Windows build [WINDOWS_BUILD]).&#13;&#10;&#13;&#10;Supported systems are Windows 10 and Windows 11. You can continue with the installation, but the application may not work correctly and no support will be provided for this system.&#13;&#10;&#13;&#10;Click Continue to install anyway, or Cancel to exit Setup." />
+
+        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+        <Control Id="Continue" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="&amp;Continue">
+          <Publish Event="EndDialog" Value="Return" />
+        </Control>
+        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
+          <Publish Event="SpawnDialog" Value="CancelDlg" />
+        </Control>
+      </Dialog>
+
+      <!--
+        Scheduled after CostFinalize, i.e. before WelcomeDlg. Not "Before=WelcomeDlg": every WixUI
+        flavor schedules WelcomeDlg, so referencing it pulls them all in and causes duplicate symbols.
+        Continue (EndDialog Return) lets the sequence go on to the normal wizard.
+      -->
+      <InstallUISequence>
+        <Show Dialog="UnsupportedOsDlg" After="CostFinalize" Condition="OS_UNSUPPORTED AND NOT Installed" />
+      </InstallUISequence>
+    </UI>
+  </Package>
+
+  <Fragment>
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="INSTALLFOLDER" Name="OsWarningDemo" />
+    </StandardDirectory>
+
+    <ComponentGroup Id="AppComponents" Directory="INSTALLFOLDER">
+      <Component>
+        <File Id="AppExe" Source="$(var.OsWarningDemo.App.TargetDir)OsWarningDemo.App.exe" KeyPath="yes">
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="OS Warning Demo"
+                    WorkingDirectory="INSTALLFOLDER" Advertise="yes" />
+        </File>
+      </Component>
+
+      <!-- Everything else in the app's build output (dll, runtimeconfig, deps.json...). -->
+      <Files Include="$(var.OsWarningDemo.App.TargetDir)**">
+        <Exclude Files="$(var.OsWarningDemo.App.TargetDir)OsWarningDemo.App.exe" />
+        <Exclude Files="$(var.OsWarningDemo.App.TargetDir)**\*.pdb" />
+      </Files>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

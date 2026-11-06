@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/OsWarningDemo.App/OsWarningDemo.App.csproj" />
+    <Project Path="src/OsWarningDemo.Installer/OsWarningDemo.Installer.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0" />
+  </Folder>
+</Solution>

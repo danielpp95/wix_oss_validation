@@ -1,0 +1,14 @@
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\bin\Release\net8.0-windows\OsWarningDemo.App.exe
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\bin\Release\net8.0-windows\OsWarningDemo.App.deps.json
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\bin\Release\net8.0-windows\OsWarningDemo.App.runtimeconfig.json
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\bin\Release\net8.0-windows\OsWarningDemo.App.dll
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\bin\Release\net8.0-windows\OsWarningDemo.App.pdb
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\obj\Release\net8.0-windows\OsWarningDemo.App.GeneratedMSBuildEditorConfig.editorconfig
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\obj\Release\net8.0-windows\OsWarningDemo.App.AssemblyInfoInputs.cache
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\obj\Release\net8.0-windows\OsWarningDemo.App.AssemblyInfo.cs
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\obj\Release\net8.0-windows\OsWarningDemo.App.csproj.CoreCompileInputs.cache
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\obj\Release\net8.0-windows\OsWarningDemo.App.dll
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\obj\Release\net8.0-windows\refint\OsWarningDemo.App.dll
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\obj\Release\net8.0-windows\OsWarningDemo.App.pdb
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\obj\Release\net8.0-windows\OsWarningDemo.App.genruntimeconfig.cache
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\obj\Release\net8.0-windows\ref\OsWarningDemo.App.dll

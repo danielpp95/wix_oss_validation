@@ -1,0 +1,6 @@
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\OsWarningDemo.Installer.wixproj.CoreCompileInputs.cache
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\bin\Release\OsWarningDemo.msi
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\bin\Release\OsWarningDemo.wixpdb
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\OsWarningDemo.msi
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\OsWarningDemo.wixpdb
+D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\OsWarningDemo.Installer.wixproj.BindTracking-neutral.txt

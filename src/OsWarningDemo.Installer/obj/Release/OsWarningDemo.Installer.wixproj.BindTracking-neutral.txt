@@ -1,0 +1,15 @@
+BuiltPdbOutput	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\OsWarningDemo.wixpdb
+BuiltTargetOutput	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\OsWarningDemo.msi
+Input	C:\Users\daniel\.nuget\packages\wixtoolset.ui.wixext\5.0.2\wixext5\WixToolset.UI.wixext.dll
+Input	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\bin\Release\net8.0-windows\OsWarningDemo.App.deps.json
+Input	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\bin\Release\net8.0-windows\OsWarningDemo.App.dll
+Input	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\bin\Release\net8.0-windows\OsWarningDemo.App.exe
+Input	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.App\bin\Release\net8.0-windows\OsWarningDemo.App.runtimeconfig.json
+Intermediate	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\#cab1.cab
+Intermediate	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\WixToolset.UI.wixext_JpRtVfankWuTFSsfHv8waKQHxHo\wix-ir\bannrbmp.bmp
+Intermediate	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\WixToolset.UI.wixext_JpRtVfankWuTFSsfHv8waKQHxHo\wix-ir\dlgbmp.bmp
+Intermediate	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\WixToolset.UI.wixext_JpRtVfankWuTFSsfHv8waKQHxHo\wix-ir\exclamic.ico
+Intermediate	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\WixToolset.UI.wixext_JpRtVfankWuTFSsfHv8waKQHxHo\wix-ir\info.ico
+Intermediate	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\WixToolset.UI.wixext_JpRtVfankWuTFSsfHv8waKQHxHo\wix-ir\new.ico
+Intermediate	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\WixToolset.UI.wixext_JpRtVfankWuTFSsfHv8waKQHxHo\wix-ir\uica.dll-1
+Intermediate	D:\daniel\Documents\dev\wix_test\src\OsWarningDemo.Installer\obj\Release\WixToolset.UI.wixext_JpRtVfankWuTFSsfHv8waKQHxHo\wix-ir\up.ico
